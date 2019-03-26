@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Visit Purposes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Visit name</th>
+      <th>Visit info</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visit_purposes.each do |visit_purpose| %>
+      <tr>
+        <td><%= visit_purpose.visit_name %></td>
+        <td><%= visit_purpose.visit_info %></td>
+        <td><%= link_to 'Show', visit_purpose %></td>
+        <td><%= link_to 'Edit', edit_visit_purpose_path(visit_purpose) %></td>
+        <td><%= link_to 'Destroy', visit_purpose, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Visit Purpose', new_visit_purpose_path %>

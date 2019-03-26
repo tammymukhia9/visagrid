@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visa_info: MyText
+  links: MyText
+
+two:
+  visa_info: MyText
+  links: MyText

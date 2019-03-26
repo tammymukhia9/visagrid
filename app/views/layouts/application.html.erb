@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Visa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+      <meta name="description" content="<%= @page_description %>">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <%= render 'layouts/navigation' %>
+    <%= yield %>
+       
+  </body>
+</html>
+
+
+
+ 
+  

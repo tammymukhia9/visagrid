@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Visa info:</strong>
+  <%= @visa_info.visa_info %>
+</p>
+
+<p>
+  <strong>Links:</strong>
+  <%= @visa_info.links %>
+</p>
+
+<%= link_to 'Edit', edit_visa_info_path(@visa_info) %> |
+<%= link_to 'Back', visa_infos_path %>

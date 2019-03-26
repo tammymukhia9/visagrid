@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Visit name:</strong>
+  <%= @visit_purpose.visit_name %>
+</p>
+
+<p>
+  <strong>Visit info:</strong>
+  <%= @visit_purpose.visit_info %>
+</p>
+
+<%= link_to 'Edit', edit_visit_purpose_path(@visit_purpose) %> |
+<%= link_to 'Back', visit_purposes_path %>

@@ -1,0 +1,2 @@
+class VisitPurpose < ApplicationRecord
+end

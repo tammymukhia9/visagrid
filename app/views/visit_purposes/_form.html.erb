@@ -1,0 +1,27 @@
+<%= form_with(model: visit_purpose, local: true) do |form| %>
+  <% if visit_purpose.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(visit_purpose.errors.count, "error") %> prohibited this visit_purpose from being saved:</h2>
+
+      <ul>
+      <% visit_purpose.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :visit_name %>
+    <%= form.text_field :visit_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :visit_info %>
+    <%= form.text_area :visit_info %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
