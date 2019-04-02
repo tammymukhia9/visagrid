@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nationality: MyString
+  source: MyString
+  destination: MyString
+  visit_purpose: MyString
+
+two:
+  nationality: MyString
+  source: MyString
+  destination: MyString
+  visit_purpose: MyString

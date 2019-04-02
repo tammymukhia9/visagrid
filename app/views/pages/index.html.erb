@@ -5,11 +5,12 @@
 Time= <%= @curr_time %> */
 
  -->
+
+ <h1>VISA GRID</h1>
 <div class="jumbotron">
  <div class="container">
- <h1>VISA GRID</h1>
  <p>Assisting you in your travel plans. We have the VISA info that you need</p>
- <p><a class="btn btn-primary btn-lg" href="#" role="button">Login to get more info</a></p>
+ <p><a class="btn btn-primary btn-lg" href="#logreg-forms" role="button">Login to get more info</a></p>
  </div>
  </div>
 <div class="container-fluid">
@@ -63,7 +64,15 @@ p>
             <button class="btn btn-primary btn-block" type="submit">Submit</button>
             <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
+        <div class="form-guest">
+          <%= render 'guestForm', user: @user %>
+        </div>
 
+        <div class="form-signup">
+          <%= render 'memberForm', member: @member %>
+        </div>
+<!-- 
+         
         <form action="/signin/guest" class="form-guest">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Guest User Log in</h1>
             <input class="form-control" type="text" id="guestuser-firstname" placeholder="First name" required="" autofocus="">
@@ -74,11 +83,12 @@ p>
                 <option value="Canada">Canada</option>
 
             </select>
-            
+            <button class="btn btn-primary btn-block" type="submit">Submit</button>
             <a href="#" id="cancel_guest"><i class="fas fa-angle-left"></i> Back</a>
         </form>
+        -->
             
-        <form action="/signup/" class="form-signup">
+        <!-- <form action="/signup/" class="form-signup">
             <div class="social-login">
                 <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
             </div>
@@ -90,48 +100,30 @@ p>
                 <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
                 <input type="password" id="user-repeatpass" class="form-control" placeholder="Confirm Password" required autofocus="">-->
 
-                
+              
 
-            <input class="form-control" id="user-firstname" type="text" name="First Name" placeholder="First name" required="">
+           <!--  <input class="form-control" id="user-firstname" type="text" name="First Name" placeholder="First name" required="">
           	<input class="form-control" id="user-lastname" type="text" name="Last name" placeholder="Last name" required="">
           	<input class="form-control" id="user-name" type="text" name="Username" placeholder="Username" required="">
           	<input class="form-control" id="user-email" type="email" name="email" placeholder="Email" required="">
           	<input class="form-control" id="user-pass" type="password" name="password" placeholder="Password" required="">
-          	<input class="form-control" id="user-repeatpass" type="password" name="password" placeholder="Confirm Password" required="">
+          	<input class="form-control" id="user-repeatpass" type="password" name="password" placeholder="Confirm Password" required=""> -->
           <!--Need to associate in order to link another table and create drop-down list--->
-         	<input class="form-control" id="user-nationality" type="text" name="nationality" placeholder="Nationality" required="">
+         	<!-- <input class="form-control" id="user-nationality" type="text" name="nationality" placeholder="Nationality" required=""> -->
 
 
 
-          	<button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+          	<!-- <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button> 
             <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
 
 
 
-        </form>
+        </form> -->
             <br>
             
     </div>
     <p style="text-align:center">
-        <a href="http://bit.ly/2RjWFMfunction toggleResetPswd(e){
-    e.preventDefault();
-    $('#logreg-forms .form-signin').toggle() // display:block or none
-    $('#logreg-forms .form-reset').toggle() // display:block or none
-}
 
-function toggleSignUp(e){
-    e.preventDefault();
-    $('#logreg-forms .form-signin').toggle(); // display:block or none
-    $('#logreg-forms .form-signup').toggle(); // display:block or none
-}
-
-$(()=>{
-    // Login Register Form
-    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-    $('#logreg-forms #btn-signup').click(toggleSignUp);
-    $('#logreg-forms #cancel_signup').click(toggleSignUp);
-})g" target="_blank" style="color:black"></a>
     </p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

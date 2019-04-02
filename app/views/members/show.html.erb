@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Mem first name:</strong>
+  <%= @member.mem_first_name %>
+</p>
+
+<p>
+  <strong>Mem last name:</strong>
+  <%= @member.mem_last_name %>
+</p>
+
+<p>
   <strong>Username:</strong>
   <%= @member.username %>
 </p>
@@ -13,11 +23,6 @@
 <p>
   <strong>Email:</strong>
   <%= @member.email %>
-</p>
-
-<p>
-  <strong>Contact number:</strong>
-  <%= @member.contact_number %>
 </p>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |

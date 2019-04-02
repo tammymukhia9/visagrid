@@ -5,7 +5,14 @@ class VisaInfosController < ApplicationController
   # GET /visa_infos.json
   def index
     @visa_infos = VisaInfo.all
+    respond_to do |format|
+    format.html {render :index}
+    format.json {render :index, status: :ok}
+    format.xml {render xml: @visa_infos.as_json}
   end
+
+end
+
 
   # GET /visa_infos/1
   # GET /visa_infos/1.json
@@ -25,6 +32,7 @@ class VisaInfosController < ApplicationController
   # POST /visa_infos.json
   def create
     @visa_info = VisaInfo.new(visa_info_params)
+    # country = Country.find(visa_info_params[:country_id])
 
     respond_to do |format|
       if @visa_info.save
@@ -49,7 +57,7 @@ class VisaInfosController < ApplicationController
         format.json { render json: @visa_info.errors, status: :unprocessable_entity }
       end
     end
-  endc
+  end
 
   # DELETE /visa_infos/1
   # DELETE /visa_infos/1.json
@@ -69,6 +77,6 @@ class VisaInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visa_info_params
-      params.require(:visa_info).permit(:visa_info, :links, :source_id, :destination_id, :nationality_id)
+      params.require(:visa_info).permit(:visa_info, :links, :source_id, :destination_id, :nationality_id, :visit_purpose_id)
     end
 end

@@ -3,7 +3,7 @@
 <div class="container col-sm-12">
     
         <div class="col-sm-3 col-md-3">
-            <%= form_tag pages_mainsearch_path, :method => 'get' do %>
+            <%= form_tag mainsearches_path, :method => 'get' do %>
             <%= select_tag :source_id,
                             options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
             <%= submit_tag "Search" %>

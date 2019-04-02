@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_002719) do
-
-  create_table "continents", force: :cascade do |t|
-    t.integer "continent_id"
-    t.string "continent_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_04_02_032125) do
 
   create_table "countries", force: :cascade do |t|
     t.string "country_name"
@@ -25,30 +18,25 @@ ActiveRecord::Schema.define(version: 2019_03_26_002719) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "guest_users", force: :cascade do |t|
-    t.integer "guest_user_id"
-    t.integer "user_id"
-    t.integer "country_id"
+  create_table "mainsearches", force: :cascade do |t|
+    t.string "nationality"
+    t.string "source"
+    t.string "destination"
+    t.string "visit_purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
+    t.string "mem_first_name"
+    t.string "mem_last_name"
     t.string "username"
     t.string "password"
     t.string "email"
-    t.string "contact_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_logs", force: :cascade do |t|
-    t.integer "log_id"
-    t.integer "user_id"
-    t.integer "visa_info_id"
-    t.datetime "logged_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "country_id"
+    t.index ["country_id"], name: "index_members_on_country_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,8 +53,11 @@ ActiveRecord::Schema.define(version: 2019_03_26_002719) do
     t.text "links"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "country_id"
-    t.index ["country_id"], name: "index_visa_infos_on_country_id"
+    t.integer "source_id"
+    t.integer "destination_id"
+    t.integer "nationality_id"
+    t.integer "visit_purpose_id"
+    t.index ["visit_purpose_id"], name: "index_visa_infos_on_visit_purpose_id"
   end
 
   create_table "visit_purposes", force: :cascade do |t|

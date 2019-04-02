@@ -1,0 +1,68 @@
+<%= form_with(model: visa_info, local: true) do |form| %>
+           
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">FROM</h3>
+                    <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+
+                        <%= form.label :source_id%>
+                        <%= form.select :source_id,
+                            options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]},
+                            selected: (@visa_info.source ? @visa_info.source.id : Country.first.id)), {} %>
+
+                    
+                    <!-- <select class="form-control" style= "height:40px" id="source">
+                        <option value="" selected disabled hidden>Select a country</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select> -->
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">TO</h3>
+                    <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                    
+                    <select class="form-control" style= "height:40px" id="destination">
+                        <option value="" selected>Select a country</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    </div>
+
+                </div>
+            </div>
+
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">VISIT PURPOSE</h3>
+                    <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                    
+                    <select class="form-control" style= "height:40px" id="source">
+                        <option value="" selected disabled hidden>Select visit purpose</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    </div>
+
+                </div>
+            </div>
+            <a href="" class="btn btn-danger btn-block ">Search</a>
+            <% end %>

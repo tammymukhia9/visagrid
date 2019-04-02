@@ -10,5 +10,25 @@
   <%= @visa_info.links %>
 </p>
 
+<p>
+ <strong>Source:</strong>
+ <%= (@visa_info.source.try(:country_name) || "NA")%>
+</p>
+
+<p>
+ <strong>Destination:</strong>
+ <%= (@visa_info.destination.try(:country_name) || "NA")%>
+</p>
+
+<p>
+ <strong>Nationality:</strong>
+ <%= (@visa_info.nationality.try(:country_name) || "NA")%>
+</p>
+
+<p>
+ <strong>Visit purpose:</strong>
+ <%= (@visa_info.visit_purpose.try(:visit_name) || "NA")%>
+</p>
+
 <%= link_to 'Edit', edit_visa_info_path(@visa_info) %> |
 <%= link_to 'Back', visa_infos_path %>

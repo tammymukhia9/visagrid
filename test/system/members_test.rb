@@ -14,8 +14,9 @@ class MembersTest < ApplicationSystemTestCase
     visit members_url
     click_on "New Member"
 
-    fill_in "Contact number", with: @member.contact_number
     fill_in "Email", with: @member.email
+    fill_in "Mem first name", with: @member.mem_first_name
+    fill_in "Mem last name", with: @member.mem_last_name
     fill_in "Password", with: @member.password
     fill_in "Username", with: @member.username
     click_on "Create Member"
@@ -28,8 +29,9 @@ class MembersTest < ApplicationSystemTestCase
     visit members_url
     click_on "Edit", match: :first
 
-    fill_in "Contact number", with: @member.contact_number
     fill_in "Email", with: @member.email
+    fill_in "Mem first name", with: @member.mem_first_name
+    fill_in "Mem last name", with: @member.mem_last_name
     fill_in "Password", with: @member.password
     fill_in "Username", with: @member.username
     click_on "Update Member"

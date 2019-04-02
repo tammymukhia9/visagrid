@@ -5,10 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>Mem first name</th>
+      <th>Mem last name</th>
       <th>Username</th>
       <th>Password</th>
       <th>Email</th>
-      <th>Contact number</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +17,11 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
+        <td><%= member.mem_first_name %></td>
+        <td><%= member.mem_last_name %></td>
         <td><%= member.username %></td>
         <td><%= member.password %></td>
         <td><%= member.email %></td>
-        <td><%= member.contact_number %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>

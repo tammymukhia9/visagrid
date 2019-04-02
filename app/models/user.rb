@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 	belongs_to :country
-	validates :first_name, presence: true
+	has_many :members
+	validates :first_name, :last_name, presence: true
 end
 

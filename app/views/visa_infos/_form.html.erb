@@ -52,6 +52,14 @@
         {} %>
   </div>
 
+   <div class="field">
+     <%= form.label :visit_purpose_id %>
+     <%= form.select :visit_purpose_id,
+     options_for_select(VisitPurpose.all.collect {|a| ["#{a.visit_name}", a.id]},
+     selected: (@visa_info.visit_purpose ? @visa_info.visit_purpose.id : VisitPurpose.first.id)),
+      {} %>
+   </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

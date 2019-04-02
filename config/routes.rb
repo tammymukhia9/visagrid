@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :members
   resources :visit_purposes
   resources :visa_infos
-  resources :members
   resources :countries
   resources :users
+  resources :mainsearches
   root 'pages#index'
   get 'pages/index'
   get 'pages/general'
   get 'pages/contact'
-  get 'pages/mainsearch'
   get 'pages/sign_up'
   get 'pages/blogs/USVisaInterview'
+  get 'mainsearches/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

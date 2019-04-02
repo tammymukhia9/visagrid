@@ -1,0 +1,2 @@
+class Mainsearch < ApplicationRecord
+end

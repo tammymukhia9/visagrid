@@ -92,11 +92,12 @@ end
   end
 end
 
-----------------------
+###-------------------Step 7-------------------###
+
 >(from step 3)rails generate scaffold User first_name:string last_name:string 
 >rails destroy scaffold Guest_user
 >rails destroy scaffold Member
-> rails generate scaffold Member username:string password:string email:string contact_number:string
+>rails generate scaffold Member username:string password:string email:string contact_number:string
 >rails destroy scaffold Visa_info
 >rails generate scaffold Visa_info visa_info:text links:text
 >rails destroy scaffold Continent
@@ -104,16 +105,28 @@ end
 >rails destroy scaffold User_log
 >rails destroy scaffold Visit_purpose
 >rails generate scaffold Visit_purpose visit_name:string visit_info:text
+>rails destroy scaffold Member
+>rails generate scaffold Member mem_first_name:string mem_last_name:string username:string password:string email:string
 
 
----------------Visa Info controller
+
+
+
+-------------------------Database------------------------
+
+rake db:drop db:create db:migrate
+
+
+
+
+---------------Visa Info controller-------------------------
 
 def visa_info_params
       params.require(:visa_info).permit(:visa_info_id, :visa_info, :links, :source_id, :destination_id, :nationality_id)
 end
 
 
-----------------Visa Info model
+----------------Visa Info model-----------------------------
 
 class VisaInfo < ApplicationRecord
   belongs_to :source, :class_name => 'Country', :foreign_key => 'source_id'
@@ -122,7 +135,7 @@ class VisaInfo < ApplicationRecord
 end
 
 
---------------- View - Visa Info - form
+--------------- View - Visa Info - form---------------------
 
   <div class="field">
     
@@ -155,12 +168,12 @@ end
   </div>
 
 
-  -------------------Drop table statement
+  -------------------Drop table statement----------------------
 
   drop_table(:visa_infos, if_exists: true)
 
 
-  ------------------Association
+  ------------------Association--------------------------------
 
   class AddCountryToVisaInfo < ActiveRecord::Migration[5.2]
   def change
@@ -170,3 +183,11 @@ end
     add_column :visa_infos, :nationality_id, :integer
   end
 end
+
+   -------------------Visa Info & Visit Purpose----------------
+
+   rails g migration AddVisitPurposeToVisaInfo visit_purpose:references
+   
+   Models
+   Visa Info - belongs_to visit_purpose
+   Visit Purpose - has many visa infos
