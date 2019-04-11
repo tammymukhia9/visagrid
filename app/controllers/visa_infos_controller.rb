@@ -1,17 +1,21 @@
 class VisaInfosController < ApplicationController
   before_action :set_visa_info, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /visa_infos
   # GET /visa_infos.json
   def index
     @visa_infos = VisaInfo.all
     respond_to do |format|
-    format.html {render :index}
-    format.json {render :index, status: :ok}
-    format.xml {render xml: @visa_infos.as_json}
+      format.html {render :index}
+      format.json {render :index, status: :ok}
+      format.xml {render xml: @visa_infos.as_json}
+    end
   end
 
-end
+  def listALL
+
+  end
 
 
   # GET /visa_infos/1
@@ -74,9 +78,9 @@ end
     def set_visa_info
       @visa_info = VisaInfo.find(params[:id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def visa_info_params
-      params.require(:visa_info).permit(:visa_info, :links, :source_id, :destination_id, :nationality_id, :visit_purpose_id)
+      params.require(:visa_info).permit(:visa_info, :links, :source_id, :destination_id, :nationality_id, :visit_purpose_id, :required)
     end
 end

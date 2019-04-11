@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_032125) do
+ActiveRecord::Schema.define(version: 2019_04_10_035321) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.text "article"
+    t.string "blog_img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "country_name"
@@ -57,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_032125) do
     t.integer "destination_id"
     t.integer "nationality_id"
     t.integer "visit_purpose_id"
+    t.boolean "required"
     t.index ["visit_purpose_id"], name: "index_visa_infos_on_visit_purpose_id"
   end
 

@@ -1,0 +1,57 @@
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        
+
+        <div class="container-fluid">
+           <% @blogs.each do |blog| %>
+     <div class="col-md-9">
+     <div class="post-thumbnail"><img src= <%= blog.blog_img %> alt="..." class="img-fluid"></div>
+      <div class="date meta-last"><%= blog.created_at%></div>
+     <h2><%= blog.title%></h2>
+     <p><%=blog.description.truncate_words(200)%></p>
+     <p>
+     <%= link_to 'Read more >', blog, class: "btn btn-default"%>
+     </p>
+     </br></br></br>
+     </div>
+    <% end %>
+  
+              <!-- post -->
+              <!-- <div class="post col-xl-6">
+                <div class="post-thumbnail"><a><img src="/image2.jpg" alt="..." class="img-fluid"></a></div>
+                <div class="post-details">
+                  <div class="post-meta d-flex justify-content-between">
+                    <div class="date meta-last">20 May | 2016</div>
+                    <div class="category"><a href="#">Business</a></div>
+                  </div><a href="post.html">
+                    <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                  
+                </div>
+              </div>
+             
+            <!-- Pagination -->
+            <div>
+              <ul class="pagination pagination-template d-flex justify-content-center">
+                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+              </ul>
+            
+          </div>
+      </div>
+        
+      </div>
+    </div>
+ 
+    <!-- Javascript files-->
+    <<!-- script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/@fancyapps/fancybox/jquery.fancybox.min.js"></script>
+    <script src="js/front.js"></script> -->
+  

@@ -5,12 +5,13 @@
 <table>
   <thead>
     <tr>
-      <th>Visa info</th>
-      <th>Links</th>
-      <th>Source</th>
-      <th>Destination</th>
-      <th>Nationality</th>
-      <th>Visit purpose</th>
+      <th class="w-25">Visa info</th>
+      <th class="w-25">Links</th>
+      <th width = "10%"%>Source</th>
+      <th width = "10%">Destination</th>
+      <th width = "10%">Nationality</th>
+      <th width = "10%">Visit purpose</th>
+      <th width = "10%">Required</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= (visa_info.destination.try(:country_name) || "NA") %></td>
         <td><%= (visa_info.nationality.try(:country_name) || "NA") %></td>
         <td><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %></td>
+        <td><%= visa_info.required %></td>
         <td><%= link_to 'Show', visa_info %></td>
         <td><%= link_to 'Edit', edit_visa_info_path(visa_info) %></td>
         <td><%= link_to 'Destroy', visa_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>

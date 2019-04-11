@@ -6,7 +6,7 @@ class VisaInfo < ApplicationRecord
 
   	 def self.search(search)
   	 	if search
-  	 		where(['source_id LIKE ?', "%#{search}%"])
+  	 		where("nationality_id = ? AND source_id = ? AND destination_id = ?","#{params[:nationality_id]}","#{params[:source_id]}","#{params[:destination_id]}")
   	 	else
   	 		all
   	 	end

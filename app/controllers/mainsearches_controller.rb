@@ -2,16 +2,23 @@ class MainsearchesController < ApplicationController
 	before_action :set_mainsearch, only: [:show, :edit, :update, :destroy]
 
 	def index
-    	@visa_infos=VisaInfo.search(params[:source_id])
+    	@visa_infos=VisaInfo.search(params[:search])
+    	@mainsearch = Mainsearch.new
+		# @nationalities = VisaInfo.uniq.pluck(:nationality_id)
+		# @sources = VisaInfo.uniq.pluck(:source_id)
+		# @destinations = VisaInfo.uniq.pluck(:destination_id)
   	end
 
-	def new
-		@mainsearch = Mainsearch.new
-		@nationality = VisaInfo.uniq.pluck(:source_id)
-	end
+	# def new
+	# 	@mainsearch = Mainsearch.new
+	# 	@nationalities = VisaInfo.uniq.pluck(:nationality_id)
+	# 	@sources = VisaInfo.uniq.pluck(:source_id)
+	# 	@destinations = VisaInfo.uniq.pluck(:destination_id)
+	# end
 
 	def create
 		@mainsearch = Mainsearch.create(mainsearch_params)
+		redirect_to mainsearch
 	end
 
 	def show

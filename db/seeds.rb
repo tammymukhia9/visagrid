@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  
+
+   VisaInfo.create(visa_info: 'Hello hello world', links: 'tt.com', source: Country.find_by(id: 2), destination: Country.find_by(id: 3), nationality: Country.find_by(id: 4), visit_purpose: VisitPurpose.find_by(id: 1))
+
+
+  

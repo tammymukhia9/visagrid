@@ -15,25 +15,22 @@ Time= <%= @curr_time %> */
  </div>
 <div class="container-fluid">
  <!-- Example row of columns -->
- <div class="row">
- <div class="col-md-4">
- <h2>US VISA Interview Questions</h2>
- <p align='justify'>For beginners, it is sometimes intimidating to apply for a US visitor visa. Listening to the "denied" stories of your friends, family or any other sources can also increase your concerns and make you nervous. You thought: "If they have been denied a US visa, what are my chances of getting a US visa?"
+ 
+     
+     <% @blogs.each do |blog| %>
+     <div class="col-md-4">
+     <h2><%= blog.title%></h2>
+     <p><%=blog.description.truncate_words(150)%></p>
+     <p>
+     <%= link_to 'Read more >', blog, class: "btn btn-default"%>
+     </p>
+     </div>
+    <% end %>
+  
 
-ALl the applicants need to be confident enough of their application
-
-When you continue to think that they will deny your visa, it will manifest during your US visa interview. You will be nervous, your voice will crack, and the consular officer may feel that you are hiding something. That is a first step towards getting visa denied.
-
-To help you prepare for your US visa application, here are some basic questions during an interview for a US visitor/tourist visa. Always remember, NEVER LIE. They already did a background check when you submitted their visa application online. </p>
- <p><a class="btn btn-default" href="/pages/blogs/USVisaInterview" role="button">View details &raquo;</a></
-p>
- </div>
- <div class="col-md-4">
- <h2>E-VISA Advantages</h2>
- <p align='justify'>Like we say, “Money saved is money earned” likewise we say, “Time saved is time earned”. In today’s day to day life, every minute counts. Thanks to the internet. Ever Since technology has gifted us with the internet, our day to day activities have become a much easier task to accomplish. These are the very few things among the thousands of services which we get through the internet. But there are also few things for which we have to move out of our offices/homes like if want to get our vehicle serviced, one can get the appointment through internet but he will have to take the vehicle to the service center as the vehicle cannot be repaired remotely by an engineer sitting at the garage and the vehicle being at your parking. Getting Visa was one such similar thing but now its a story of the past. E Visas are not easily gettable if proper guidelines are followed and proper experts are contacted </p>
- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></
-p>
- </div>
+   
+     
+  
 
  <div class="col-md-4">
  <div id="logreg-forms">
@@ -46,6 +43,7 @@ p>
             <button class="btn btn btn-block" align="center" type="submit"><i class="fas fa-sign-in-alt"></i><a href="/pages/mainsearch"> Sign in  (Already a member?)</a></button>
             <p style="text-align:center"> OR  </p>
             <div class="social-login">
+
                 <button class="btn facebook-btn social-btn btn-block" type="submit"><i class="fab fa-facebook-f" style="color:white"></i> Sign in with Facebook</button>
             </div>
 
@@ -129,24 +127,7 @@ p>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
  </div>
- <!--<div class="col-md-4">
- <h2>Heading</h2>
- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac c
-ursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risu
-s. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></
-p>
- </div>
- <div class="col-md-4">
- <h2>Heading</h2>
- <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget q
-uam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
- commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p
->
- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></
-p>
- </div>-->
- </div>
+  </div>
  <hr>
  <footer>
  <p>Sitemap</p>

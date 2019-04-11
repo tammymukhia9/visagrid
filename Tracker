@@ -191,3 +191,32 @@ end
    Models
    Visa Info - belongs_to visit_purpose
    Visit Purpose - has many visa infos
+
+   ------------------Blog creation-------------
+   
+   rails g scaffold Blog title:string article:text
+   rails destroy scaffold Blog
+   rails g scaffold Blog title:string title_description:text article:text image:string
+   drop_table(:blogs, if_exists: true)
+
+
+   In blog > view > show.html.erb, insert
+        <%=raw @blog.article%> 
+
+        (This takes in HTML tags )
+
+   ------------------Seeds file--------------------
+
+  VisaInfo.create(visa_info: 'Hello hello world', links: 'tt.com', source: Country.find_by(id: 2), destination: Country.find_by(id: 3), nationality: Country.find_by(id: 4), visit_purpose: VisitPurpose.find_by(id: 1))
+
+  ------------------ New field added--------------
+  
+  rails generate migration add_fieldname_to_tablename fieldname:string 
+
+
+ > $rake db:migrate:redo (This will roll back the last migration and migrate it again.)
+
+ change controller
+ > "rails destroy migration migration_name" (migration_name is the one use chose while creating migration. Remove "timestamp_" from your migration file name to get it)
+
+ 

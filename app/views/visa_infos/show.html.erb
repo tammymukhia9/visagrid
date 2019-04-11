@@ -29,6 +29,12 @@
  <strong>Visit purpose:</strong>
  <%= (@visa_info.visit_purpose.try(:visit_name) || "NA")%>
 </p>
+ 
+<p>
+ <strong>Required:</strong>
+ <%= @visa_info.required %>
+</p>
+
 
 <%= link_to 'Edit', edit_visa_info_path(@visa_info) %> |
 <%= link_to 'Back', visa_infos_path %>

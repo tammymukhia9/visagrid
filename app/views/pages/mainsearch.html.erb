@@ -1,39 +1,60 @@
 
 
 <div class="container col-sm-12">
-    
-        <div class="col-sm-3 col-md-3">
-            <%= form_tag pages_mainsearch_path, :method => 'get' do %>
-            <%= select_tag :source_id,
-                            options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
-            <%= submit_tag "Search" %>
-             <% end %>
+          <div class="col-sm-3 col-md-3">
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                    <h3 class="panel-title">Check your VISA requirements</h3>
+                </div>
+              <div class="panel-body">
+                    <div class="form-group">
+                      <%= form_tag pages_mainsearch_path, :method => 'get' do %>
+                      <p>Nationality: <%= select_tag :nationality_id,  options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
+                      <br/>
+                      Source: <%= select_tag :source_id,
+                                      options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
+                      <br/>
+                       Destination: <%= select_tag :destination_id,
+                                      options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
+                       <br/>
+                       Visit purpose: <%= select_tag :visit_purpose_id,
+                                      options_for_select(VisitPurpose.all.collect {|a| ["#{a.visit_name}", a.id]}, params[:search] )%>
+                      </p><br/>
+                      <%= submit_tag "Search" %>
+                       <% end %>
 
-        </div>
+                    </div>
+              </div>
+            </div>
+          </div> 
+
+      
+
+
+
         <div class="col-sm-9 col-md-9">
         
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Results</h3>
-                   <!-- <div class="pull-right">
-                        <button type="button" class="close" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                    </div>-->
+                </div>
 
+
+                <div class="panel-body">
+                    <div class="form-group">
                     <p id="notice"><%= notice %></p>
 
-                    <h1>Visa Infos</h1>
+                  
 
-                    <table>
+                    <!-- <table>
                       <thead>
                         <tr>
-                          <th>Visa info</th>
-                          <th>Links</th>
-                          <th>Source</th>
-                          <th>Destination</th>
-                          <th>Nationality</th>
-                          <th>Visit purpose</th>
+                          <th scope = "col">Visa info</th>
+                          <th scope="col">Links</th>
+                          <th class="w-25">Source</th>
+                          <th class="w-25">Destination</th>
+                          <th class="w-25">Nationality</th>
+                          <th class="w-25">Visit purpose</th>
                           <th colspan="3"></th>
                         </tr>
                       </thead>
@@ -47,32 +68,34 @@
                             <td><%= (visa_info.destination.try(:country_name) || "NA") %></td>
                             <td><%= (visa_info.nationality.try(:country_name) || "NA") %></td>
                             <td><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %></td>
-                            <td><%= link_to 'Show', visa_info %></td>
-                            <td><%= link_to 'Edit', edit_visa_info_path(visa_info) %></td>
-                            <td><%= link_to 'Destroy', visa_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
                           </tr>
                         <% end %>
                       </tbody>
-                    </table>
+                    </table> -->
+                    
+                       <% @visa_infos.each do |visa_info| %>
+                        <% if visa_info.required%>
+                     
+                      
+                       <p>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %> <em>require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></p>
+                      <br>
+                      <td><%= visa_info.visa_info %></td>
+                      <td><%= visa_info.links %></td>
+                      <% else %>
+                     <p>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %><em> do not require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></p>
+                     <br>
+                     <td><%= visa_info.visa_info %></td>
+                     <td><%= visa_info.links %></td>
 
-                    <br>
-
-<%= link_to 'New Visa Info', new_visa_info_path %>
+                    <% end %>
+                    
+                   <% end %>
+                    </div>
 
                 </div>
-               <!--  <div class="panel-body">
-                    <span class="pull-right">
-                        <a href="#" class="btn btn-default">Manage categories</a> 
-                        <a href="#" class="btn btn-default">Arrange</a> 
-                        <a href="#" class="btn btn-lg btn-primary">
-                        <span class="glyphicon glyphicon-plus"></span> Create new</a>
-                    </span>  
-                   
-                    <p>Admin Dashboard Accordion List Group Menu</p>
-                    <div class="alert alert-success"><h3>Yes! It's compatible with BS 3.0.3, 3.1 & 3.2 </h3></div>
-                    
-                </div> -->
-            </div> 
+                      
+          
         </div>
     
 </div>

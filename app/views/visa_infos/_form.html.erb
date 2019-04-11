@@ -60,6 +60,11 @@
       {} %>
    </div>
 
+   <div class="field">
+    <%= form.label :required %>
+    <%= form.select :required, [["True", true] , ["False", false]] %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
