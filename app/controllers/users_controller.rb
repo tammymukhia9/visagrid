@@ -26,11 +26,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     country = Country.find(user_params[:country_id])
+
     # @user.build_country(:id=>country.id)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        flash[:notice] = "Welcome GUEST. Get Started!"
+        format.html { redirect_to "http://localhost:3000/pages/mainsearch" }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+
+        # format.html { redirect_to @user, notice: 'User was successfully created.' }
+        # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -67,6 +72,8 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+   
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

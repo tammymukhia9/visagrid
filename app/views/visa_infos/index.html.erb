@@ -19,7 +19,7 @@
   <tbody>
     <% @visa_infos.each do |visa_info| %>
       <tr>
-        <td><%= visa_info.visa_info %></td>
+        <td><%= visa_info.visa_info.truncate_words(50) %></td>
         <td><%= visa_info.links %></td>
         <td><%= (visa_info.source.try(:country_name) || "NA") %></td>
         <td><%= (visa_info.destination.try(:country_name) || "NA") %></td>

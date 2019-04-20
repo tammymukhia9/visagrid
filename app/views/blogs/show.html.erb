@@ -1,5 +1,6 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
-
+<% if signed_in? %>
 <p>
   <strong>Title:</strong>
   <%= @blog.title %>
@@ -12,13 +13,22 @@
 
 <p>
   <strong>Article:</strong>
-  <%= @blog.article %>
+  <%= @blog.article.html_safe %>
 </p>
 
 <p>
   <strong>Blog img:</strong>
   <%= @blog.blog_img %>
 </p>
-
+<%= link_to 'New Blog |', new_blog_path %>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+
+<% else %>
+	<p class="title"> <%= @blog.title %></p></br>
+	<p class="title_description"><%= @blog.description %></p></br>
+	<p class="blog_post"><%= @blog.article.html_safe %></p>
+
+
+<% end %>
+</div>

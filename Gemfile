@@ -5,6 +5,8 @@ ruby '2.6.1'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
+gem "clearance", '~> 1.15.1'
+gem 'tinymce-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

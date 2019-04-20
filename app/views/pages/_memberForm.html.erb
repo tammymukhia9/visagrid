@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+
 <%= form_with(model: member, local: true) do |form| %>
   <% if member.errors.any? %>
     <div id="error_explanation">
@@ -11,14 +14,8 @@
     </div>
   <% end %>
 
-
-  <div class="social-login">
-        <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
-  </div>
                                 
-  <p style="text-align:center">OR</p>
-
-  <div class="field">
+<div class="field">
     <%= form.label :Firstname %>
     <%= form.text_field :mem_first_name, :cols=>20, :rows=>20 %>
   </div>
@@ -39,7 +36,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :ConfirmPassword %>
+    <%= form.label :ConfirmPassword, "Confirm Password" %>
     <%= form.password_field :password %>
   </div>
 
@@ -57,11 +54,16 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    
+     <%= form.submit %>
+     
+     <a href="/pages/mainsearch"> 
+   
   </div>
   <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
 <% end %>
-
+</div>
+</div>
 
 
 

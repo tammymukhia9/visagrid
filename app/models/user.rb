@@ -3,4 +3,3 @@ class User < ApplicationRecord
 	has_many :members
 	validates :first_name, :last_name, presence: true
 end
-

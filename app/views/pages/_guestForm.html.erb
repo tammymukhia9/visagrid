@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +14,7 @@
 
   <div class="field">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name%>
   </div>
 
   <div class="field">
@@ -34,3 +35,4 @@
   </div>
   <a href="#" id="cancel_guest"><i class="fas fa-angle-left"></i> Back</a>
 <% end %>
+

@@ -22,7 +22,7 @@
 /* sign in FORM */
 #logreg-forms{
     width:412px;
-    margin:10vh auto;
+    margin:auto;
     background-color:#f3f3f3;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -125,6 +125,10 @@
     
 }
 
+.visa{    
+   font-size: 1.7rem;
+}
+
 
 /**
 Main search page css
@@ -168,9 +172,7 @@ Main search page css
      .title_description{
             font-size: 1.7rem;
             background-color: #f1f1f1;
-            padding: 20px;
-            
-                                   
+            padding: 20px;                                   
     }
 
         .blog_post{
@@ -182,17 +184,47 @@ Main search page css
      
     
 
-.blog-post .post-thumbnail{
-    background-image: asset-url('image1.jpg');
-  width: 100%;
-  margin-bottom: 10px;
-}
+        .blog-post .post-thumbnail{
+            background-image: asset-url('image1.jpg');
+          width: 100%;
+          margin-bottom: 10px;
+        }
 
 
+        .btn btn-primary edit {
+            
+            position: absolute;
+            right: 0;
+        }
 
+/* FAQ */
 
+    table, th, td {
+      border: 1px solid black;
+     padding: 15px;
+    text-align: center;
+    }
 
+      .faq{
+            font-size: 2rem;
+            background-color: #F5DEB3;
+            padding: 20px;           
+                                   
+    }
 
+       .question{
+            font-size: 1.7rem;
+            background-color: #f1f1f1;
+            font-style: oblique; 
+            padding:5px;                                 
+            }
+
+        .answer{
+            font-size: 1.5rem;
+            background-color: #f1f1f1;
+            text-align: justify; 
+                                                   
+            }
 
 
 

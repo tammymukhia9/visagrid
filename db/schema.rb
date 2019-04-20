@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_035321) do
+ActiveRecord::Schema.define(version: 2019_04_18_024206) do
 
   create_table "blogs", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2019_04_10_035321) do
     t.string "blog_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "member_id"
+    t.integer "visa_info_id"
+    t.index ["member_id"], name: "index_comments_on_member_id"
+    t.index ["visa_info_id"], name: "index_comments_on_visa_info_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -41,11 +51,16 @@ ActiveRecord::Schema.define(version: 2019_04_10_035321) do
     t.string "mem_last_name"
     t.string "username"
     t.string "password"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "country_id"
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128
+    t.string "email"
     t.index ["country_id"], name: "index_members_on_country_id"
+    t.index ["email"], name: "index_members_on_email"
+    t.index ["remember_token"], name: "index_members_on_remember_token"
   end
 
   create_table "users", force: :cascade do |t|

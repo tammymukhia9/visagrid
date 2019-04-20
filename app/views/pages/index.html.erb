@@ -1,74 +1,72 @@
-
-<!--
-/*<h1>Welcome to VISA GRID</h1>
-<%= 'BLOG ARTICLE' %>
-Time= <%= @curr_time %> */
-
- -->
-
+ <%= tinymce_assets %>
  <h1>VISA GRID</h1>
-<div class="jumbotron">
- <div class="container">
- <p>Assisting you in your travel plans. We have the VISA info that you need</p>
- <p><a class="btn btn-primary btn-lg" href="#logreg-forms" role="button">Login to get more info</a></p>
- </div>
- </div>
-<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="container">
+            <p>Assisting you in your travel plans. We have the VISA info that you need</p>
+            <p><a class="btn btn-primary btn-lg" href="#logreg-forms" role="button">Login to get more info</a></p>
+        </div>
+    </div>
+    <div class="container-fluid">
  <!-- Example row of columns -->
  
-     
      <% @blogs.each do |blog| %>
-     <div class="col-md-4">
-     <h2><%= blog.title%></h2>
-     <p><%=blog.description.truncate_words(150)%></p>
-     <p>
-     <%= link_to 'Read more >', blog, class: "btn btn-default"%>
-     </p>
-     </div>
+      <div class="col-md-4">
+         <h2><%= blog.title%></h2>
+            <p><%=blog.description.truncate_words(150)%></p>
+            <p>
+                  <%= link_to 'Read more >', blog,class: "btn btn-default"%>
+            </p>
+      </div>
     <% end %>
   
-
-   
-     
   
+   <div class="col-md-4">
+    <% if signed_in? %>
+    <img src="image4.jpg" alt="Find" height="242" width="242">
 
- <div class="col-md-4">
- <div id="logreg-forms">
-        <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Log in</h1>
-            
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            
-            <button class="btn btn btn-block" align="center" type="submit"><i class="fas fa-sign-in-alt"></i><a href="/pages/mainsearch"> Sign in  (Already a member?)</a></button>
-            <p style="text-align:center"> OR  </p>
-            <div class="social-login">
 
-                <button class="btn facebook-btn social-btn btn-block" type="submit"><i class="fab fa-facebook-f" style="color:white"></i> Sign in with Facebook</button>
-            </div>
+    <div><%= link_to 'Check VISA Requirements here >>>', "/pages/mainsearch",class: "btn btn-default"%></div>
+    <% else %>
+    <div id="logreg-forms">
+      <%= form_for :session, url:session_path, :html => { :class => 'form-signin'} do |form| %>
+      <!--<form class="form-signin"> -->
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Log in</h1>
+        <%= form.text_field :email, type: 'email', placeholder: 'Username', id: 'inputEmail', class: "form-control" %>
+          <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus=""> -->
+        <%= form.password_field :password, placeholder: 'Password', id: 'inputPassword', class: "form-control" %>
+            <!-- <input type="password" id="inputPassword" class="form-control" placeholder="Password" required=""> -->
+        <%= form.submit :button => "Sign In", class: "btn btn btn-block"  %>    
+              <!-- <button class="btn btn btn-block" align="center" type="submit"><i class="fas fa-sign-in-alt"></i><a href="/pages/mainsearch"> Sign in  (Already a member?)</a></button> -->
+                <p style="text-align:center"> OR  </p>
+              <!-- <div class="social-login">
 
-            <p style="text-align:center"> OR  </p>
-            <button class="btn btn-success btn-block" align="center" type="submit" id="btn-guest"><i class="fas fa-sign-in-alt"></i> Sign in as GUEST USER</button>
+              <button class="btn facebook-btn social-btn btn-block" type="submit"><i class="fab fa-facebook-f" style="color:white"></i> Sign in with Facebook</button>
+              </div>
 
-            <a href="#" id="forgot_pswd">Forgot password?</a>
-            <hr>
+                <p style="text-align:center"> OR  </p> -->
+              <button class="btn btn-success btn-block" align="center" type="submit" id="btn-guest"><i class="fas fa-sign-in-alt"></i> Sign in as GUEST USER</button>
+
+                <a href="#" id="forgot_pswd">Forgot password?</a>
+                <hr>
             <!-- <p>Don't have an account!</p>  -->
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
-        </form>
+              <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+              <% end %>
+      <!-- </form> -->
 
-        <form action="/reset/password/" class="form-reset">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Reset Password</h1>
-            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+      <form action="/reset/password/" class="form-reset">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Reset Password</h1>
+          <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             <button class="btn btn-primary btn-block" type="submit">Submit</button>
-            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
-        </form>
-        <div class="form-guest">
-          <%= render 'guestForm', user: @user %>
-        </div>
+              <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+      </form>
 
-        <div class="form-signup">
+      <div class="form-guest">
+          <%= render 'guestForm', user: @user %>
+      </div>
+
+       <div class="form-signup">
           <%= render 'memberForm', member: @member %>
-        </div>
+       </div>
 <!-- 
          
         <form action="/signin/guest" class="form-guest">
@@ -119,17 +117,20 @@ Time= <%= @curr_time %> */
         </form> -->
             <br>
             
-    </div>
-    <p style="text-align:center">
+          </div>
+          <p style="text-align:center">
 
-    </p>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="/script.js"></script>
- </div>
-  </div>
- <hr>
- <footer>
- <p>Sitemap</p>
- </footer>
-</div> 
+          </p>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+              <script src="/script.js"></script>
+              <% end %>
+        </div>
+      </div>
+         <hr>
+
+          <footer>
+             <p>Sitemap</p>
+          </footer>
+    </div> 
+     <%= tinymce %>

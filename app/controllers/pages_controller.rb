@@ -1,14 +1,19 @@
 class PagesController < ApplicationController
   def index
   	@user=User.new
-    @blogs=Blog.last(2)
+    @blogs=Blog.first(2)
   	@member=Member.new
     @usVisaInterview = Blog.last(1)
   end
 
   def mainsearch
     @visa_infos=VisaInfo.where("nationality_id = ? AND source_id = ? AND destination_id = ?","#{params[:nationality_id]}","#{params[:source_id]}","#{params[:destination_id]}")
+    # @comments = Comment.where("visa_info_id = ?", @visa_infos.first.id)
+    # for @comments.each do |Comment|
+    #   @member = 
+
   end
+
   
   def test
     @blogs=Blog.all

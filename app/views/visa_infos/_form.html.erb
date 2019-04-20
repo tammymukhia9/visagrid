@@ -1,3 +1,5 @@
+<%= tinymce_assets %>
+<div class="container">
 <%= form_with(model: visa_info, local: true) do |form| %>
   <% if visa_info.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +15,8 @@
 
   <div class="field">
     <%= form.label :visa_info %>
-    <%= form.text_area :visa_info %>
+    <%= form.text_area :visa_info, :class => "tinymce", :rows => 40, :cols => 10 %>
+  
   </div>
 
   <div class="field">
@@ -24,7 +27,7 @@
 
   <div class="field">
     
-    <%= form.label :source_id%>
+    <%= form.label :source_id %>
     <%= form.select :source_id,
         options_for_select(Country.all.collect{|s| ["#{s.country_name}", s.id]},
         selected: (@visa_info.source ? @visa_info.source.id : Country.first.id)
@@ -69,3 +72,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+ <%= tinymce %>

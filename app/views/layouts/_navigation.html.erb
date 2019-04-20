@@ -6,34 +6,34 @@ a-label="Toggle navigation"> -->
 </button>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
- <li class="nav-item active">
- <a class="nav-link navbar-dark" href="/">Home <span class="sr-only">(current)</sp
-an></a>
- </li>
- <li class="nav-item">
- <a class="nav-link navbar-dark" href="/pages/blogs/index">VISA Guide</a>
- </li>
- <li class="nav-item">
- <a class="nav-link navbar-dark" href="/pages/test">Blogs</a>
- </li>
- <li class="nav-item dropdown">
- <a class="nav-link dropdown-toggle navbar-dark" href="#" id="navbarDropdown" role
-="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
- FAQs
- </a>
- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
- <a class="dropdown-item" href="https://www.gvsu.edu">Transit</a>
- <a class="dropdown-item" href="https://www.cis.gvsu.edu">Student</a>
- <div class="dropdown-divider"></div>
- <a class="dropdown-item" href="https://www.gatech.edu">Georgia Tech</a>
- </div>
- </li>
+ 	<li class="nav-item active">
+ 		<a class="nav-link navbar-dark" href="/">Home <span class="sr-only">(current)</span></a>
+ 	</li>
+  	<li class="nav-item">
+ 		<a class="nav-link navbar-dark" href="/pages/test">Blogs</a>
+ 	</li>
+ 	<li class="nav-item">
+ 		<a class="nav-link navbar-dark" href="/pages/aboutus">About Us</a>
+	</li>
+
+ 	<li class="nav-item dropdown">
+ 		<a class="nav-link dropdown-toggle navbar-dark" href="#" id="navbarDropdown" role ="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 		FAQs
+ 		</a>
+ 		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+ 			<a class="dropdown-item" href="/pages/faqTypesOfVisa">Types of VISA</a>
+			<a class="dropdown-item" href="/pages/faqSchengenVisa">Schengen Visa</a>
+			<!-- <div class="dropdown-divider"></div>
+ 				<a class="dropdown-item" href="https://www.gatech.edu">Georgia Tech</a>
+ 			</div> -->
+ 	</li>
 </ul>
-<form class="navbar-nav ml-auto pull-right">
- <input class="form-control" type="search" placeholder="Search" aria-label="
-Search">
- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+<% if signed_in? %>
+      Signed in as: <%= current_user.username %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+    <% end %>
 </div>
 </nav>
 

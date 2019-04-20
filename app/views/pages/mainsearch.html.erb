@@ -2,28 +2,37 @@
 
 <div class="container col-sm-12">
           <div class="col-sm-3 col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                <div class="panel-heading">
                     <h3 class="panel-title">Check your VISA requirements</h3>
                 </div>
               <div class="panel-body">
-                    <div class="form-group">
-                      <%= form_tag pages_mainsearch_path, :method => 'get' do %>
-                      <p>Nationality: <%= select_tag :nationality_id,  options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
-                      <br/>
-                      Source: <%= select_tag :source_id,
-                                      options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
-                      <br/>
-                       Destination: <%= select_tag :destination_id,
-                                      options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:search] )%>
-                       <br/>
-                       Visit purpose: <%= select_tag :visit_purpose_id,
-                                      options_for_select(VisitPurpose.all.collect {|a| ["#{a.visit_name}", a.id]}, params[:search] )%>
-                      </p><br/>
-                      <%= submit_tag "Search" %>
-                       <% end %>
+                  
 
-                    </div>
+                      <%= form_tag pages_mainsearch_path, :method => 'get' do %>
+                      <div class = "form-group">
+                        <%=label_tag "Nationality"%>
+                          <%= select_tag :nationality_id,  options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:nationality_id] ), class: "form-control", :style => "height:40px"%>
+                      </div>
+                      
+                      <div class = "form-group">
+                        <%=label_tag "Source"%>
+                         <%= select_tag :source_id,
+                                        options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:source_id] ), class: "form-control", :style => "height:40px"%>
+                      </div>
+                      <div class = "form-group">
+                         <%=label_tag "Destination"%>
+                          <%= select_tag :destination_id,
+                                        options_for_select(Country.all.collect{|a| ["#{a.country_name}", a.id]}, params[:destination_id] ), class: "form-control", :style => "height:40px"%>
+                       </div>
+                       <div class = "form-group">
+                        <%=label_tag "Visit purpose"%>
+                          <%= select_tag :visit_purpose_id,
+                                        options_for_select(VisitPurpose.all.collect {|a| ["#{a.visit_name}", a.id]}, params[:visit_purpose_id] ), class: "form-control", :style => "height:40px"%>
+                       </div>
+                      <%= submit_tag "Search" %>
+                <% end %>
+
               </div>
             </div>
           </div> 
@@ -44,58 +53,59 @@
                     <div class="form-group">
                     <p id="notice"><%= notice %></p>
 
-                  
-
-                    <!-- <table>
-                      <thead>
-                        <tr>
-                          <th scope = "col">Visa info</th>
-                          <th scope="col">Links</th>
-                          <th class="w-25">Source</th>
-                          <th class="w-25">Destination</th>
-                          <th class="w-25">Nationality</th>
-                          <th class="w-25">Visit purpose</th>
-                          <th colspan="3"></th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <% @visa_infos.each do |visa_info| %>
-                          <tr>
-                            <td><%= visa_info.visa_info %></td>
-                            <td><%= visa_info.links %></td>
-                            <td><%= (visa_info.source.try(:country_name) || "NA") %></td>
-                            <td><%= (visa_info.destination.try(:country_name) || "NA") %></td>
-                            <td><%= (visa_info.nationality.try(:country_name) || "NA") %></td>
-                            <td><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %></td>
-
-                          </tr>
-                        <% end %>
-                      </tbody>
-                    </table> -->
-                    
+                                                       
                        <% @visa_infos.each do |visa_info| %>
+                       <%= hidden_field_tag("page_name", visa_info.id, :id => "hidden_visa_info_id") %>
+                       <%= hidden_field_tag("page_name", current_user.id, :id => "hidden_member_id") %>
                         <% if visa_info.required%>
+                        
                      
                       
-                       <p>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %> <em>require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></p>
+                       <h3>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %> <em>require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></h3>
                       <br>
-                      <td><%= visa_info.visa_info %></td>
-                      <td><%= visa_info.links %></td>
+                      <div class="visa">
+                        <div><%= visa_info.visa_info.html_safe %></div>
+                      </div>
+                      <div><%= visa_info.links%></div>
                       <% else %>
                      <p>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %><em> do not require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></p>
                      <br>
-                     <td><%= visa_info.visa_info %></td>
-                     <td><%= visa_info.links %></td>
+                      <div><%= visa_info.visa_info.html_safe %></div>
+                     
+                    
+                     <div><%= visa_info.links %></div>
 
                     <% end %>
                     
                    <% end %>
-                    </div>
 
                 </div>
-                      
+              
           
         </div>
+        
+      </div>
+      <a class="btn btn-primary edit" href="#" role="button" align="right">Edit VISA info</a>
     
+      <div id="comment-section"></div>
+
+      <div>
+        
+        <form id="commentForm" action="/comments" method="POST">
+          Comment:<br>
+          <textarea rows="4" cols="50" name="comment">Comment here ... </textarea>
+          <input type="hidden" name="visa_info_id" id="input-visa-info-id"><input type="hidden" name="member_id" id="input-member-id"><br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <script type="text/javascript">
+        // console.log("member_id = " + document.getElementById('hidden_member_id').value)
+        document.getElementById('input-visa-info-id').value = document.getElementById('hidden_visa_info_id').value
+        document.getElementById('input-member-id').value = document.getElementById('hidden_member_id').value
+        getAllComments(document.getElementById('hidden_visa_info_id').value);
+        getMemberName();
+      </script>
+
+    </div>
 </div>
+

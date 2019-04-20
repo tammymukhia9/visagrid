@@ -1,5 +1,9 @@
 class Member < ApplicationRecord
+
+	include Clearance::User
+
 	belongs_to :country
+	has_many :comments
 
 	validates :mem_first_name, :mem_last_name, presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

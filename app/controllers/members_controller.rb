@@ -5,6 +5,11 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render :index, status: :ok}
+      format.xml {render xml: @members.as_json}
+    end
   end
 
   # GET /members/1
@@ -28,7 +33,8 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        # format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        format.html { redirect_to "http://localhost:3000/" }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
@@ -71,4 +77,5 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:mem_first_name, :mem_last_name, :username, :password, :email, :country_id)
     end
+
 end

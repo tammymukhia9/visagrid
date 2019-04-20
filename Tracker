@@ -219,4 +219,73 @@ end
  change controller
  > "rails destroy migration migration_name" (migration_name is the one use chose while creating migration. Remove "timestamp_" from your migration file name to get it)
 
- 
+ <% if signed_in? %>
+      Signed in as: <%= current_user.email %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+    <% end %>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+
+class AddClearanceToMembers < ActiveRecord::Migration[5.2]
+  def self.up
+    change_table :members do |t|
+      t.string :email
+      t.string :encrypted_password, limit: 128
+      t.string :confirmation_token, limit: 128
+      t.string :remember_token, limit: 128
+    end
+
+    add_index :members, :email
+    add_index :members, :remember_token
+
+    members = select_all("SELECT id FROM members WHERE remember_token IS NULL")
+
+    members.each do |member|
+      update <<-SQL
+        UPDATE members
+        SET remember_token = '#{Clearance::Token.new}'
+        WHERE id = '#{member['id']}'
+      SQL
+    end
+  end
+
+  def self.down
+    change_table :members do |t|
+      t.remove :email, :encrypted_password, :confirmation_token, :remember_token
+    end
+  end
+end
+
+--------------------TinyMCE WYSIWYG editor---------------------
+
+gem 'tinymce-rails'
+-----------------------------------------------
+1) Add to your application.js:
+
+//= require tinymce
+or (2) with jQuery integration:
+
+//= require tinymce-jquery
+
+(3) The TinyMCE assets can be included on a per-page basis using the tinymce_assets helper:
+
+<%= tinymce_assets %>
+#=> <script type="text/javascript" src="/assets/tinymce.js">
+-----------------------------------------------
+
+<%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
+
+Invoke: <%= tinymce %>
+-------------------------------------------------------------------
+
+> rails generate scaffold Comment body:text
+
+
+
