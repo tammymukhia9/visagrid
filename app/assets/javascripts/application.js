@@ -103,6 +103,7 @@ var addCommentField = function(divId, mem_divId) {
     var div_tag = document.getElementById('comment-section');
     var newDiv = document.createElement('div');
     newDiv.setAttribute('id',divId);
+    newDiv.setAttribute('class','border-top')
     div_tag.appendChild(newDiv);
     var mem_newDiv = document.createElement('div');
     mem_newDiv.setAttribute('id',mem_divId);
@@ -111,19 +112,6 @@ var addCommentField = function(divId, mem_divId) {
 
 var addCommentToDiv = function(comment, divId) {
     document.getElementById(divId).innerHTML = comment.body;
-}
-
-var commentSubmit = function() {
-    var frm = $('#commentForm');
-    $.ajax({
-        url: '/comments',
-        type: 'post',
-        dataType: 'json',
-        contentType: 'application/json'
-    }).done(function(response){
-        alert("Comment Added");
-        location.reload();
-    });
 }
 
 
@@ -138,7 +126,7 @@ function getMemberName(mem_id, mem_divId){
                     if(ajaxRequest.status == 200){
                         memberJson = ajaxRequest.responseText;
                         member = JSON.parse(memberJson);
-                        document.getElementById(mem_divId).innerHTML = "- commented by " + member.mem_first_name + " " + member.mem_last_name;
+                        document.getElementById(mem_divId).innerHTML = " - commented by " + member.mem_first_name + " " + member.mem_last_name;
                         console.log(member.mem_first_name);
                     }
                     else{

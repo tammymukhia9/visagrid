@@ -52,11 +52,11 @@
                 <div class="panel-body">
                     <div class="form-group">
                     <p id="notice"><%= notice %></p>
-
-                                                       
+                            
                        <% @visa_infos.each do |visa_info| %>
-                       <%= hidden_field_tag("page_name", visa_info.id, :id => "hidden_visa_info_id") %>
-                       <%= hidden_field_tag("page_name", current_user.id, :id => "hidden_member_id") %>
+                         # <%= hidden_field_tag("page_name", visa_info.id, :id => "hidden_visa_info_id") %>
+                         # <%= hidden_field_tag("page_name", current_user.id, :id => "hidden_member_id") %>
+                         <%= visa_info_id = visa_info.id %>
                         <% if visa_info.required%>
                         
                      
@@ -91,17 +91,40 @@
 
       <div>
         
-        <form id="commentForm" action="/comments" method="POST">
+        <!-- <form id="commentForm" action="/comments" method="POST">
           Comment:<br>
           <textarea rows="4" cols="50" name="comment">Comment here ... </textarea>
-          <input type="hidden" name="visa_info_id" id="input-visa-info-id"><input type="hidden" name="member_id" id="input-member-id"><br><br>
+          <input type="hidden" name="visa_info_id" id="input-visa-info-id">
+          <input type="hidden" name="member_id" id="input-member-id"><br><br>
           <input type="submit" value="Submit">
-        </form>
+        </form> -->
+        <%= form_tag comments_path, :method => 'post' do %>
+  
+
+          <div class="field">
+            <%= label_tag "Comment: " %>
+            <%= text_field_tag :body %>
+          </div>
+
+          <div class="field">
+
+             <%= hidden_field_tag 'member_id', current_user.id %>
+          </div>
+
+          <div class="field">
+             <%= hidden_field_tag 'visa_info_id', @visa_info_id %>
+          </div>
+
+          <div class="actions">
+            <%= submit_tag "Submit" %>
+          </div>
+
+        <% end %>
       </div>
       <script type="text/javascript">
         // console.log("member_id = " + document.getElementById('hidden_member_id').value)
-        document.getElementById('input-visa-info-id').value = document.getElementById('hidden_visa_info_id').value
-        document.getElementById('input-member-id').value = document.getElementById('hidden_member_id').value
+        // document.getElementById('input-visa-info-id').value = document.getElementById('hidden_visa_info_id').value
+        // document.getElementById('input-member-id').value = document.getElementById('hidden_member_id').value
         getAllComments(document.getElementById('hidden_visa_info_id').value);
         getMemberName();
       </script>
