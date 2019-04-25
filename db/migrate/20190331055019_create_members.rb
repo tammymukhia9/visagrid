@@ -6,7 +6,7 @@ class CreateMembers < ActiveRecord::Migration[5.2]
       t.string :mem_last_name
       t.string :username
       t.string :password
-      t.string :email
+      # t.string :email
 
       t.timestamps
     end
