@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'mainsearches/index'
   get 'pages/mainsearch'
   get 'pages/test'
+  get 'reset/password'
   get 'pages/aboutus'
   get 'pages/faqTypesOfVisa'
   get 'pages/faqSchengenVisa'

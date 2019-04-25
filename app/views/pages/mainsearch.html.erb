@@ -54,28 +54,31 @@
                     <p id="notice"><%= notice %></p>
                             
                        <% @visa_infos.each do |visa_info| %>
-                         # <%= hidden_field_tag("page_name", visa_info.id, :id => "hidden_visa_info_id") %>
-                         # <%= hidden_field_tag("page_name", current_user.id, :id => "hidden_member_id") %>
-                         <%= visa_info_id = visa_info.id %>
+                         <%= hidden_field_tag("page_name", visa_info.id, :id => "hidden_visa_info_id") %>
+                         <% visa_info_id = visa_info.id %>
                         <% if visa_info.required%>
                         
                      
                       
                        <h3>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %> <em>require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></h3>
                       <br>
-                      <div class="visa">
-                        <div><%= visa_info.visa_info.html_safe %></div>
-                      </div>
-                      <div><%= visa_info.links%></div>
+                      
                       <% else %>
                      <p>Citizens of <%= (visa_info.nationality.try(:country_name) || "NA") %><em> do not require </em><%= (visa_info.visit_purpose.try(:visit_name) || "NA") %> when traveling from <%= (visa_info.destination.try(:country_name) || "NA") %> to <%= (visa_info.source.try(:country_name) || "NA") %></p>
                      <br>
-                      <div><%= visa_info.visa_info.html_safe %></div>
-                     
-                    
-                     <div><%= visa_info.links %></div>
-
+                                          
                     <% end %>
+
+                    <div class="visa">
+                        <%= visa_info.visa_info.html_safe %>
+                    </div>
+                    <div>
+                        <p id="official_links"> For more information, here are some useful links</p>
+                        <%= visa_info.links.html_safe %>
+                        
+                    </div>
+
+                    
                     
                    <% end %>
 
@@ -85,10 +88,10 @@
         </div>
         
       </div>
-      <a class="btn btn-primary edit" href="#" role="button" align="right">Edit VISA info</a>
+      <!-- <a class="btn btn-primary edit" href="#" role="button" align="right">Edit VISA info</a> -->
     
       <div id="comment-section"></div>
-
+      <% if signed_in? %>
       <div>
         
         <!-- <form id="commentForm" action="/comments" method="POST">
@@ -121,6 +124,7 @@
 
         <% end %>
       </div>
+      <% end %>
       <script type="text/javascript">
         // console.log("member_id = " + document.getElementById('hidden_member_id').value)
         // document.getElementById('input-visa-info-id').value = document.getElementById('hidden_visa_info_id').value
