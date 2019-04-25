@@ -23,3 +23,17 @@ Things you may want to cover:
 
 * ...
 # visagrid
+
+Testing specifications for members:
+mem_first_name:string 
+mem_last_name:string 
+username:string 
+password:string 
+email:string
+
+
+- mem_first_name must be present
+- mem_last_name must be present
+- username must be unique
+- password must be more than 6 characters
+

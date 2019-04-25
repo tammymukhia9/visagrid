@@ -28,12 +28,5 @@ class PagesController < ApplicationController
   end
  
 
-  def visaguide
-  end
-
-  def general
-  end
-
-  def contact
-  end
+  
 end
