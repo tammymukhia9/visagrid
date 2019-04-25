@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:notice] = "Welcome GUEST. Get Started!"
-        format.html { redirect_to "http://localhost:3000/pages/mainsearch" }
+        format.html { redirect_to "/pages/mainsearch" }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
 
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
