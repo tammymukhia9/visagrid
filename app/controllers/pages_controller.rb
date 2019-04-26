@@ -7,10 +7,10 @@ class PagesController < ApplicationController
   end
 
   def mainsearch
-    if (params[:nationality_id] != "" && params[:source_id] != "" && params[:destination_id] != "" && params[:visit_purpose_id] != "" )
+    if (params[:nationality_id] && params[:source_id] && params[:destination_id] && params[:visit_purpose_id] )
       @visa_infos=VisaInfo.where("nationality_id = ? AND source_id = ? AND destination_id = ? AND visit_purpose_id = ?","#{params[:nationality_id]}","#{params[:source_id]}","#{params[:destination_id]}","#{params[:visit_purpose_id]}")
     else 
-      @visa_infos=VisaInfo.where("nationality_id = ? AND source_id = ? AND destination_id = ? AND visit_purpose_id = ?","#{1}" ,"#{2}" ,"#{3}" ,"#{2}")
+      @visa_infos=VisaInfo.where("nationality_id = ? AND source_id = ? AND destination_id = ? AND visit_purpose_id = ?","#{1}" ,"#{1}" ,"#{1}" ,"#{1}")
     end
     # @comments = Comment.where("visa_info_id = ?", @visa_infos.first.id)
     # for @comments.each do |Comment|
