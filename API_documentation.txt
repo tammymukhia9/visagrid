@@ -1,0 +1,8 @@
+Title: API to get all VISA information
+Return Datatype: XML, URL: https://visa-info-search.herokuapp.com/visa_infos.xml
+Return Datatype: JSON, URL: https://visa-info-search.herokuapp.com/visa_infos.json
+
+
+Title: API to get specific VISA information
+Return Datatype: JSON, URL: https://visa-info-search.herokuapp.com/visa_infos/{id}.json
+Parameter: {id} – This is the id of VISA information
